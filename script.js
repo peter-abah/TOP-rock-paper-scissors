@@ -27,28 +27,58 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
-    let playerSelection;
-    let computerSelection;
-    let scores = {
-        player: 0,
-        computer: 0
-    };
-
-    for (let i = 0; i < 5; i++) {
-        playerSelection = prompt("Choose either 'rock', 'paper' or 'scissors'").
-                toLowerCase();
-        computerSelection = computerPlay();
-        
-        let result = playRound(playerSelection, computerSelection);
-        console.log(result, playerSelection, computerSelection);
-        scores[result]++;
+function playChoice(e) {
+    if (scores.computer == 5 || scores.player == 5) {
+        let message = "RELOAD TO PLAY AGAIN";
+        updateMessage(message);
+        return;
     }
-
-    if (scores.player === scores.computer) {
-        return "draw";
-    }
-    return scores.player > scores.computer ? "player" : "computer";
+    let playerSelection = this.getAttribute("data-choice");
+    let computerSelection = computerPlay();
+    let result = playRound(playerSelection, computerSelection);
+    scores[result]++;
+    updateDom(playerSelection, computerSelection, result);
 }
 
-console.log(game());
+function changeClass(dom, className) {
+    let classList = dom.classList;
+    if (classList.length > 1) {
+        classList.remove(classList.item(1));
+    }
+    classList.add(className);
+}
+
+function updateMessage(message) {
+    document.querySelector(".message").textContent = message;
+}
+
+function showResultMessage(result) {
+    let message;
+    if (result == "computer") {
+        message = 'You lost this round';
+    } else if (result == "player") {
+        message = 'You won this round';
+    } else {
+        message = "DRAW!"
+    }
+
+    updateMessage(message)
+}
+
+function updateDom(playerSelection, computerSelection, result) {
+    changeClass(document.querySelector(".computer-choice"), computerSelection);
+    changeClass(document.querySelector(".player-choice"), playerSelection);
+
+    document.querySelector(".computer-score").textContent = scores.computer;
+    document.querySelector(".player-score").textContent = scores.player;
+
+    showResultMessage(result);
+}
+
+const scores = {
+    player: 0,
+    computer: 0
+};
+
+const buttons = document.querySelectorAll('.choice-button');
+buttons.forEach(button => button.addEventListener("click", playChoice));

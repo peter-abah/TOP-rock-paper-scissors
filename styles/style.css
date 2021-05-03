@@ -1,0 +1,128 @@
+@charset "UTF-8";
+
+/* CSS RESETS */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* GENERAL STYLES */
+html {
+    box-sizing: border-box;
+}
+* {
+    box-sizing: inherit;
+}
+body {
+    background-color: rgb(1, 29, 29);
+    font-family: Arial, Helvetica, sans-serif;
+}
+.main-container {
+    background-color: rgb(1, 29, 29);
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    max-width: 31.25rem;
+    height: 100%;
+}
+
+.header {
+    padding: 2rem;
+    flex: 0 1 auto;
+}
+.title {
+    color: #FFF;
+    font-size: 2rem;
+    font-family: monospace;
+    font-weight: 700;
+    text-align: center;
+}
+
+.game-area {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+.computer-div, .player-div {
+    padding: 1rem;
+    position: relative;
+    flex: 1 1 auto;
+}
+.computer-choice, .player-choice {
+    width: 6.25rem;
+    height: 6.25rem;
+    margin: auto;
+    transition: all .2s ease-in;
+}
+.score {
+    font-size: 2rem;
+    color: #FFF;
+    font-family: monospace;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+}
+.button-div {
+    display: flex;
+    margin: 4rem auto 0;
+    width: fit-content;
+}
+.choice-button {
+    display: block;
+    margin: 0 .5rem;
+    width: 5rem;
+    height: 2.25rem;
+    background-color: rgb(17, 94, 94);
+    border: none;
+    border-radius: 2rem;
+    color: rgb(255, 248, 248);
+    font-family: cursive;
+}
+
+.message {
+    height: 5rem;
+    color: #FFF;
+    text-align: center;
+    font-family: monospace;
+    transition: 0.2s;
+}
+
+.hidden {
+    display: none;
+}
+.rock {
+    background-color: black;
+    border: .5rem solid gray;
+}
+.paper {
+    background-color: #FFF;
+    border: .5rem solid #00F;
+}
+.scissors {
+    background-color: aquamarine;
+    border: .5rem dashed black;
+}
